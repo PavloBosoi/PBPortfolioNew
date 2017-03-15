@@ -1,0 +1,188 @@
+/* ==|====================
+   Module/Buttons
+   ======================= */
+
+/*---second menu transform---*/
+.sand-menu{
+	@include ptr(width,40);
+	@include ptr(height,30);
+	position: relative;
+	cursor: pointer;
+	margin: 0 auto;
+}
+.sand-menu i{
+	display: block;
+	position: absolute;
+	border: none;
+	border-radius: 4px;
+	width: 100%;
+	@include ptr(height,5);
+	@include ptr(top,12);
+	background: #fff;
+	transition: all .5s linear;
+}
+.sand-menu i::before,
+.sand-menu i::after{
+	content: '';
+	display: block;
+	position: absolute;
+	width: 100%;
+	@include ptr(height,5);
+	background-color: #fff;
+	border: none;
+	border-radius: 4px;
+	transition: transform 0.5s, top 0.2s;
+	transition-delay: 0.3s, 0s;
+}
+.sand-menu i::before{
+	@include ptr(top,-12);
+}
+.sand-menu i::after{
+	@include ptr(top,12);
+}
+.sand-menu.active i {
+	background-color: transparent;
+	@include ptr(top,12);
+	transform: rotate(180deg);
+}
+.sand-menu.active i::before{
+	top: 0;
+	transform: rotate(140deg);
+}
+.sand-menu.active i::after{
+	top: 0;
+	transform: rotate(-140deg);
+}
+
+
+/*---border-effects---*/
+.g-border-twain::before,
+.g-border-twain::after{
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 1px;
+	width: 0;
+	background-color: #fff;
+	transition: all 0.8s linear;
+}
+.g-border-twain::after{
+	left: auto;
+	right: 0;
+}
+.active .g-border-twain::before,
+.active .g-border-twain::after{
+	width: 50%;
+}
+
+/*---slide-effects---*/
+.js-slide-effect-left > li,
+.js-slide-effect-left > p,
+.js-slide-effect-left > span,
+.js-slide-effect-left > div{
+	left: -200px;
+}
+.js-slide-effect-right > li,
+.js-slide-effect-right > p,
+.js-slide-effect-right > span,
+.js-slide-effect-right > div{
+	right: -200px;
+}
+
+/*---btn-all---*/
+.btn-all{
+	position: relative;
+
+	display: block;
+	@include ptr(width,200);
+	@include ptr(height,40);
+	margin: 50px auto 0;
+	margin: 5rem auto 0;
+	overflow: hidden;
+	@include ptr(font-size,16);
+	@include ptr(line-height,40);
+	text-align: center;
+	color: #fff;
+	text-decoration: none;
+	letter-spacing: normal;
+
+	background-color: $color1;
+	@include ptr(border-radius,25);
+}
+
+.btn-all span{
+	position: absolute;
+	top: 0;
+	@include ptr(left,-40);
+	@include ptr(width,40);
+	@include ptr(height,40);
+
+	@include ptr(font-size,18);
+	@include ptr(line-height,38);
+	color: $color1;
+
+	background-color: #fff;
+	border: 1px solid $color1;
+	@include ptr(border-radius,25);
+	transition: all 0.5s linear;
+}
+
+.btn-all:hover span{
+	left: 0;
+}
+
+.btn-all:hover{
+	@include ptr(padding,0 0 0 30);
+	color: #fff;
+	text-decoration: none;
+}
+
+.btn-all__white{
+	color: $color1;
+	background-color: #fff;
+}
+
+.btn-all__white span{
+	color: #fff;
+
+	background-color: $color1;
+	border: 1px solid #fff;
+}
+
+.btn-all__white:hover{
+	color: $color1;
+}
+
+.btn-form{
+	@include ptr(margin,20 0 0 0);
+	float: right;
+	transition: all .5s linear;
+}
+.btn-form input{
+	background-color: transparent;
+	border: none;
+	padding: 0;
+	text-transform: uppercase;
+	color: #fff;
+	cursor: pointer;
+}
+.btn-form::before{
+	content: '\f1d9';
+	position: absolute;
+	top: 0;
+	@include ptr(left,-40);
+	@include ptr(width,38);
+	@include ptr(height,38);
+	@include ptr(font-size,18);
+	color: $color1;
+	background-color: #fff;
+	border: 1px solid $color1;
+	@include ptr(border-radius,25);
+	@include ptr(line-height,38);
+	font-family: FontAwesome;
+	transition: all .5s linear;
+}
+.btn-form:hover::before{
+	left: 0;
+}

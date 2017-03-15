@@ -1,0 +1,15 @@
+/* ==|====================
+   Layout/Footer
+   ======================= */
+
+.footer {
+    background-color: $color2;
+    @include ptr(height,120);
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+.copyright{
+    @include vertical;
+    @include fluidFontSize(12px,16px,480px,1024px,20px,14px);
+}

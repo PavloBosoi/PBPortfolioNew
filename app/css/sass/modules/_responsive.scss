@@ -1,0 +1,114 @@
+/* ==|====================
+   Module/Responsive
+   ======================= */
+
+@media only screen and (max-width: 1999px) {
+
+}
+
+@media only screen and (max-width: 1679px) {
+
+}
+
+@media only screen and (max-width: 1365px) {
+
+}
+
+@media only screen and (max-width: 1199px) {
+    html{
+        font-size: 9px;
+    }
+}
+
+@media only screen and (max-width: 1023px) {
+
+}
+
+@media only screen and (max-width: 767px) {
+    .about-parent{
+        flex-direction: column;
+        text-align: center;
+    }
+    .resume-part{
+        @include ptr(margin-top,40);
+    }
+    .resume-part:first-child{
+        margin-top: 0;
+    }
+    .resume-block::before,
+    .wrap-resume-item::before{
+        display: none;
+    }
+    .resume-block__left .wrap-resume-item,
+    .resume-block__right .wrap-resume-item{
+        padding: 0;
+    }
+    .resume-item::after{
+        display: none;
+    }
+    .g-section__blue::before,
+    .g-section__white::before{
+        bottom: -3%;
+    }
+    .resume-block__left .resume-item:hover,
+    .resume-block__left .resume-item:focus{
+        left: 0;
+    }
+    .resume-block__right .resume-item:hover,
+    .resume-block__right .resume-item:focus{
+        right: 0;
+    }
+    .menu-feedback-copy p{
+        margin: auto;
+    }
+    .menu-feedback-contacts{
+        display: flex;
+        justify-content: space-between;
+    }
+    html{
+        font-size: 8px;
+    }
+}
+
+@media only screen and (max-width: 639px) {
+    .skills-line{
+        @include ptr(margin-top,15);
+    }
+    .skills-line:first-child{
+        margin-top: 0;
+    }
+    .form-group{
+        @include ptr(margin-bottom, 30);
+    }
+    .btn-form{
+        margin: 0 auto;
+        float: none;;
+    }
+}
+
+@media only screen and (max-width: 479px) {
+    .portfolio::after{
+        bottom: -2%;
+    }
+    .category-filter{
+        @include ptr(padding-top,140);
+    }
+    .menu-feedback-copy p{
+        text-align: center;
+    }
+    .menu-feedback-contacts{
+        flex-direction: column;
+        p{
+            margin: auto;
+        }
+    }
+    .popup-portfolio{
+        @include ptr(width,400);
+    }
+    .item-text{
+        @include ptr(margin-top,40);
+    }
+    html{
+        font-size: 7px;
+    }
+}

@@ -1,0 +1,126 @@
+/* ==|====================
+   Module/Global
+   ======================= */
+.g-section__space{
+    @include ptr(padding,120 0);
+}
+.g-section__blue {
+    position: relative;
+    background-color: $color1;
+}
+.g-section__blue::before{
+    content: '';
+    position: absolute;
+    bottom: -7%;
+    left: -5%;
+    width: 110%;
+    @include ptr(height,100);
+    background-color: $color1;
+    transform: rotate(2deg);
+}
+.g-section__white{
+    position: relative;
+}
+.g-section__white::before{
+    content: '';
+    position: absolute;
+    bottom: -7%;
+    left: -5%;
+    width: 110%;
+    @include ptr(height,100);
+    background-color: #fff;
+    transform: rotate(2deg);
+    z-index: 2;
+}
+/*===titles===*/
+.g-title-main{
+    text-align: center;
+    @include ptr(margin,0 0 40 0);
+    color: $color2;
+}
+.g-title-main h2{
+    font-family: $font2;
+    font-weight: 100;
+    @include fluidFontSize(22px,36px,480px,1024px,40px,29px);
+    text-transform: uppercase;
+}
+.g-title-main p{
+    font-family: $font2;
+    font-weight: 100;
+    @include fluidFontSize(14px,18px,480px,1024px,22px,16px);
+    @include ptr(margin,20 0 0 0);
+}
+
+.g-title-section{
+    position: relative;
+    text-align: center;
+    @include ptr(margin,0 40 20);
+    color: $color2;
+}
+.g-title-section h3{
+    font-family: $font2;
+    @include fluidFontSize(18px,22px,480px,1024px,26px,20px);
+}
+
+.g-title__white{
+    color: #fff;
+}
+
+/*---preloader-effects---*/
+.g-loader{
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+}
+.g-loader span{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background-color: $color2;
+}
+.g-loader .g-loader__right{
+    left: auto;
+    right: 0;
+}
+
+.g-loader-inner{
+    width: 64px;
+    height: 64px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: url('../images/spinner.svg') no-repeat 50% 50%;
+    margin: auto;
+    z-index: 2;
+}
+
+/*---to-top---*/
+.g-to-top{
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: $color1;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    text-align: center;
+    color: #fff;
+    z-index: 3;
+    transition: all .5s linear;
+}
+.g-to-top:hover{
+    opacity: .5;
+}

@@ -1,0 +1,50 @@
+/* ==|====================
+   Base/Fonts
+   ======================= */
+
+@font-face {
+    font-family: 'PFBeauSansPro';
+    src:
+        url("../fonts/PFBeauSansPro-Bold.otf"),
+        url("../fonts/PFBeauSansPro-Bold.ttf") format("truetype");
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'PFBeauSansPro';
+    src:
+        url("../fonts/PFBeauSansPro-BoldItalic.otf"),
+        url("../fonts/PFBeauSansPro-BoldItalic.ttf") format("truetype");
+    font-weight: bold;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'PFBeauSansPro';
+    src:
+        url("../fonts/PFBeauSansPro-Regular.otf"),
+        url("../fonts/PFBeauSansPro-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'PFBeauSansPro';
+    src:
+        url("../fonts/PFBeauSansPro-Italic.otf"),
+        url("../fonts/PFBeauSansPro-Italic.ttf") format("truetype");
+    font-weight: 400;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'PFBeauSansPro';
+    src:
+        url("../fonts/PFBeauSansPro-ThinItalic.otf");
+    font-weight: 100;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'PFBeauSansPro';
+    src:
+        url("../fonts/PFBeauSansPro-Thin.otf");
+    font-weight: 100;
+    font-style: normal;
+}
