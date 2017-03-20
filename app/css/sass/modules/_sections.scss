@@ -394,6 +394,9 @@
     flex-direction: column;
     justify-content: space-between;
     line-height: 0;
+    p{
+        display: none;
+    }
 }
 .form-group{
     position: relative;

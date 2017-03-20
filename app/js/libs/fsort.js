@@ -28,7 +28,7 @@
 
             $(tag).on('click', function(){//клик на кнопку фильтра
                 $(tag).css({'pointer-events':'none', 'cursor': 'default'});
-                setTimeout(function () {
+                setTimeout(function(){
                     $(tag).css({'pointer-events':'auto', 'cursor': 'pointer'});
                 },500);
                 //loadFilterPost();//работа прелоадера
@@ -55,17 +55,22 @@
                         catIter++;//увеличиваем счетчик массива
                     }
                 }
-
                 var count = 0;//счетчик выводимых постов
                 $(el).each(function(index){
-                    if($.inArray($(this).data('slug'), cat) != -1 && count < curPPP && $(this).data('show') == 1){//если категория текщего эл. есть в массиве + выведенных эл. меньше указанного + его атрибут show = 1(пост был раньше ваыведен)
+                    var slugs = $(this).data('slug').split(','),
+                        inCategory = false;
+                    for(var i = 0; i < slugs.length; i++){
+                        if($.inArray(slugs[i], cat) != -1 && count < curPPP && $(this).data('show') == 1){//если категория текщего эл. есть в массиве + выведенных эл. меньше указанного + его атрибут show = 1(пост был раньше ваыведен)
 
-                        $(this).addClass('show');
-                        count++;//увеличиваем счетчик выводимых постов
+                            $(this).addClass('show');
+                            inCategory = true;
+                        }
+                        else if(inCategory == false){
+                            $(this).removeClass('show');
+                        }
                     }
-                    else{
-
-                        $(this).removeClass('show');
+                    if(inCategory == true){
+                        count++;//увеличиваем счетчик выводимых постов
                     }
                 });
                 if(cat.length === 0){//если массив категорий пуст(ни одна из категорий не выведена)
@@ -94,6 +99,8 @@
                 var count = curPPP;//счетчик выводимых постов
                 curPPP += ppp;//увеличиваем тикущее количество выводимых эл. на указанное
                 $(el).each(function(){
+                    var slugs = $(this).data('slug').split(','),
+                        inCategory = false;
                     if(cat.length === 0){//если массив категорий пуст(ни одна из категорий не выведена)
                         if(count < curPPP && $(this).data('show') != 1){//если счетчик выводимых эл. меньше чем текущее количество и атрибут show =0(пост не был раньше ваыведен)
                             $(this).addClass('show');
@@ -105,15 +112,20 @@
                         }
                     }
                     else{
-                        if($.inArray($(this).data('slug'), cat) != -1 && count < curPPP && $(this).data('show') != 1){//если категория текщего эл. есть в массиве + выведенных эл. меньше указанного + его атрибут show =0(пост не был раньше ваыведен)
-                            $(this).addClass('show');
-                            $(this).data('show',1);
-                            count++;
-                        }
-                        else{
-                            if($(this).data('show') != 1){//атрибут show =0(пост не был раньше ваыведен)
-                                $(this).removeClass('show');
+                        for(var i = 0; i < slugs.length; i++){
+                            if($.inArray(slugs[i], cat) != -1 && count < curPPP && $(this).data('show') != 1){//если категория текщего эл. есть в массиве + выведенных эл. меньше указанного + его атрибут show =0(пост не был раньше ваыведен)
+                                $(this).addClass('show');
+                                $(this).data('show',1);
+                                inCategory = true;
                             }
+                            else{
+                                if(inCategory == false && $(this).data('show') != 1){//атрибут show =0(пост не был раньше ваыведен)
+                                    $(this).removeClass('show');
+                                }
+                            }
+                        }
+                        if(inCategory == true){
+                            count++;//увеличиваем счетчик выводимых постов
                         }
                     }
                 });
@@ -150,14 +162,17 @@
         showMore: function(cat,el,more){
             var btnShow = false;
             $(el).each(function(){
+                var slugs = $(this).data('slug').split(',');
                 if(cat.length === 0){//если массив категорий пуст(ни одна из категорий не выведена)
                     if ($(this).data('show') != 1){//атрибут show =0(пост не был раньше ваыведен)
                         btnShow = true;
                     }
                 }
                 else{
-                    if($.inArray($(this).data('slug'), cat) != -1 && $(this).data('show') != 1){//если категория текщего эл. есть в массиве + его атрибут show =0(пост не был раньше ваыведен)
-                        btnShow = true;
+                    for(var i = 0; i < slugs.length; i++) {
+                        if ($.inArray(slugs[i], cat) != -1 && $(this).data('show') != 1) {//если категория текщего эл. есть в массиве + его атрибут show =0(пост не был раньше ваыведен)
+                            btnShow = true;
+                        }
                     }
                 }
             });

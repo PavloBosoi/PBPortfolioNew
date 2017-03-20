@@ -28,7 +28,8 @@ $(function () {
 
 
 
-    $(".sand-menu").click(function() {
+    //main menu slide
+    $(".sand-menu").click(function(){
         var elToggle = $('.js-menu'),
             elSlideLeft = elToggle.find('.js-slide-effect-left'),
             elSlideRight = elToggle.find('.js-slide-effect-right');
@@ -80,11 +81,14 @@ $(function () {
         }
     }
 
+    //full height element
     function fullHeight(el){
         el.height(ScreenHeight);
     }
     fullHeight($('.js-full-height'));
 
+
+    //scroll to top
     function scrollTop(el) {
         $(window).scroll(function () {
             if ($(this).scrollTop() > 0) {
@@ -103,8 +107,47 @@ $(function () {
     scrollTop($('.js-to-top'));
 
 
+/*    $(window).scroll(function () {
+        if ($(this).scrollTop() > 0) {
+            $('.js-top-menu').slideDown();
+        } else {
+            $('.js-top-menu').slideUp();
+        }
+    });*/
+
+    //if top menu more than window, we hide him
+    function topMenuHide(el,outer){
+        var liWidth = 0;
+        el.find('li').each(function(){
+            liWidth += $(this).outerWidth();
+        });
+        if(liWidth + outer > el.outerWidth()){
+            el.css({'opacity':0,'z-index':0});
+        }
+        else{
+            el.css({'opacity':1,'z-index':3});
+        }
+    }
+    topMenuHide($('.js-top-menu'),150);
+
+
+    var home = $('.menu-home'),
+        portfolio = $('.menu-portfolio'),
+        skills = $('.menu-skills'),
+        resume = $('.menu-resume'),
+        contacts = $('.menu-contacts');
+
+    $('.js-anchor-menu li a').on('click',function(e){
+        e.preventDefault();
+        var curSection = '#'+$(this).attr('title').toLowerCase(),
+            offsetTop = $(curSection).offset().top - 80;
+        $("html, body").animate({ scrollTop: offsetTop }, "slow");
+    });
+
+
     /*=================Plagins===============*/
 
+    //plugin fsort
     $('.portfolio-project').fsort({
         ppp: 4
     });
@@ -213,6 +256,9 @@ $(function () {
         ScreenHeight = $(window).height();
 
         fullHeight($('.js-full-height'));
+        setTimeout(function(){
+            topMenuHide($('.js-top-menu'),150);
+        },500);
 
         /*setTimeout(function(){
             $('.portfolio-project').fsort({
