@@ -2,7 +2,7 @@
    Module/Global
    ======================= */
 .g-section__space{
-    @include ptr(padding,60 0 120);
+    @include ptr(padding,80 0 180);
 }
 .g-section__blue {
     position: relative;
@@ -36,7 +36,7 @@
 /*===titles===*/
 .g-title-main{
     text-align: center;
-    @include ptr(margin,0 0 40 0);
+    @include ptr(margin,0 0 80 0);
     color: $color2;
 }
 .g-title-main h2{

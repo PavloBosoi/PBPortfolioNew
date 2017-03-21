@@ -1,6 +1,7 @@
 $(function () {
     var ScreenWidth = $(window).width(),
-        ScreenHeight = $(window).height();
+        ScreenHeight = $(window).height(),
+        TopMenuHeight = $('.js-anchor-menu').outerHeight();
 
     //обработка тачей
     if (isTouch()) {
@@ -146,19 +147,19 @@ $(function () {
             resumeLi = $('.menu-resume'),
             contactsLi = $('.menu-contacts');
 
-        if (scroll >= home && scroll <= portfolio){
+        if (scroll >= home && scroll < portfolio){
             homeLi.siblings().removeClass('active');
             homeLi.addClass('active');
         }
-        if (scroll >= portfolio && scroll <= skills){
+        if (scroll >= portfolio && scroll < skills){
             portfolioLi.siblings().removeClass('active');
             portfolioLi.addClass('active');
         }
-        if (scroll >= skills && scroll <= resume){
+        if (scroll >= skills && scroll < resume){
             skillsLi.siblings().removeClass('active');
             skillsLi.addClass('active');
         }
-        if (scroll >= resume && scroll <= contacts){
+        if (scroll >= resume && scroll < contacts){
             resumeLi.siblings().removeClass('active');
             resumeLi.addClass('active');
         }
@@ -168,8 +169,7 @@ $(function () {
         }
     }
 
-    function frontAnchor(){
-        var topMenuHeight = $('.js-anchor-menu').outerHeight()+1;
+    function frontAnchor(topMenuHeight){
 
         $(window).scroll(function () {
             var scroll = $(this).scrollTop() + topMenuHeight;
@@ -186,8 +186,8 @@ $(function () {
         });
     }
     setTimeout(function(){
-        frontAnchor();
-        anchorPosition(window.pageYOffset +71);
+        frontAnchor(TopMenuHeight);
+        anchorPosition(window.pageYOffset + TopMenuHeight);
     },500);
 
 

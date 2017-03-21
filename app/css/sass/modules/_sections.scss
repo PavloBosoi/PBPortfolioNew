@@ -61,7 +61,7 @@
 .portfolio{
     background: transparent url("../images/portfolio-bg.jpg") no-repeat fixed 50% 0;
     background-size: cover;
-    @include ptr(padding,0 0 100 0);
+    @include ptr(padding,140 0 80);
     position: relative;
     overflow: hidden;
     z-index: 1;
@@ -94,7 +94,7 @@
 }
 .tags-form{
     position: absolute;
-    top: 0;
+    @include ptr(top,40);
     left: 0;
     z-index: 2;
     width: 100%;
