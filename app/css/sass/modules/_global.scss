@@ -2,7 +2,7 @@
    Module/Global
    ======================= */
 .g-section__space{
-    @include ptr(padding,120 0);
+    @include ptr(padding,60 0 120);
 }
 .g-section__blue {
     position: relative;
@@ -11,12 +11,13 @@
 .g-section__blue::before{
     content: '';
     position: absolute;
-    bottom: -7%;
+    top: -7%;
     left: -5%;
     width: 110%;
     @include ptr(height,100);
     background-color: $color1;
     transform: rotate(2deg);
+    z-index: -1;
 }
 .g-section__white{
     position: relative;
@@ -24,13 +25,13 @@
 .g-section__white::before{
     content: '';
     position: absolute;
-    bottom: -7%;
+    top: -7%;
     left: -5%;
     width: 110%;
     @include ptr(height,100);
     background-color: #fff;
     transform: rotate(2deg);
-    z-index: 2;
+    z-index: -1;
 }
 /*===titles===*/
 .g-title-main{
