@@ -107,13 +107,13 @@ $(function () {
     scrollTop($('.js-to-top'));
 
 
-/*    $(window).scroll(function () {
+    $(window).scroll(function () {
         if ($(this).scrollTop() > 0) {
-            $('.js-top-menu').slideDown();
+            $('.js-top-menu').addClass('active');
         } else {
-            $('.js-top-menu').slideUp();
+            $('.js-top-menu').removeClass('active');
         }
-    });*/
+    });
 
     //if top menu more than window, we hide him
     function topMenuHide(el,outer){
@@ -131,18 +131,66 @@ $(function () {
     topMenuHide($('.js-top-menu'),150);
 
 
-    var home = $('.menu-home'),
-        portfolio = $('.menu-portfolio'),
-        skills = $('.menu-skills'),
-        resume = $('.menu-resume'),
-        contacts = $('.menu-contacts');
 
-    $('.js-anchor-menu li a').on('click',function(e){
-        e.preventDefault();
-        var curSection = '#'+$(this).attr('title').toLowerCase(),
-            offsetTop = $(curSection).offset().top - 80;
-        $("html, body").animate({ scrollTop: offsetTop }, "slow");
-    });
+
+
+    function anchorPosition(scroll){
+        var home = $('#home').offset().top,
+            portfolio = $('#portfolio').offset().top,
+            skills = $('#skills').offset().top,
+            resume = $('#resume').offset().top,
+            contacts = $('#contacts').offset().top;
+        var homeLi = $('.menu-home'),
+            portfolioLi = $('.menu-portfolio'),
+            skillsLi = $('.menu-skills'),
+            resumeLi = $('.menu-resume'),
+            contactsLi = $('.menu-contacts');
+
+        if (scroll >= home && scroll <= portfolio){
+            homeLi.siblings().removeClass('active');
+            homeLi.addClass('active');
+        }
+        if (scroll >= portfolio && scroll <= skills){
+            portfolioLi.siblings().removeClass('active');
+            portfolioLi.addClass('active');
+        }
+        if (scroll >= skills && scroll <= resume){
+            skillsLi.siblings().removeClass('active');
+            skillsLi.addClass('active');
+        }
+        if (scroll >= resume && scroll <= contacts){
+            resumeLi.siblings().removeClass('active');
+            resumeLi.addClass('active');
+        }
+        if (scroll >= contacts){
+            contactsLi.siblings().removeClass('active');
+            contactsLi.addClass('active');
+        }
+    }
+
+    function frontAnchor(){
+        var topMenuHeight = $('.js-anchor-menu').outerHeight()+1;
+
+        $(window).scroll(function () {
+            var scroll = $(this).scrollTop() + topMenuHeight;
+            anchorPosition(scroll);
+        });
+
+        $('.js-anchor-menu li a').on('click',function(e){
+            e.preventDefault();
+            var curSection = '#'+$(this).attr('title').toLowerCase(),
+                offsetTop = $(curSection).offset().top - topMenuHeight + 1;
+            console.log(offsetTop);
+            $(this).closest('li').addClass();
+            $("html, body").animate({ scrollTop: offsetTop }, "slow");
+        });
+    }
+    setTimeout(function(){
+        frontAnchor();
+        anchorPosition(window.pageYOffset +71);
+    },500);
+
+
 
 
     /*=================Plagins===============*/

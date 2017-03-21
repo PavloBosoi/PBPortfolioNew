@@ -36,7 +36,7 @@
             @include ptr(width,40);
             @include ptr(height,40);
             @include ptr(line-height,40);
-            @include ptr(font-size,16);
+            @include ptr(font-size,22);
             @include ptr(margin,5 0);
             text-align: center;
             color: #fff;
@@ -153,9 +153,9 @@
     width: calc(100% - 10rem);
     top: 0;
     @include ptr(left, 100);
-    @include ptr(height, 80);
-    background-color: $color2;
+    @include ptr(height, 70);
     z-index: 3;
+    transition: all .5s linear;
     ul{
         display: flex;
         justify-content: space-around;
@@ -163,6 +163,14 @@
     }
     li{
         margin: auto;
+        &.active{
+            a{
+                color: $color1;
+                &::before{
+                    transform: scaleX(1);
+                }
+            }
+        }
         a{
             color: #fff;
             text-transform: uppercase;
@@ -190,4 +198,12 @@
             }
         }
     }
+}
+.top-menu.active{
+    background-color: $color2;
+}
+
+//g-recapthca
+.grecaptcha-badge{
+    bottom: 100% !important;
 }
