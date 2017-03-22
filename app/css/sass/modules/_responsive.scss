@@ -48,7 +48,7 @@
     }
     .g-section__blue::before,
     .g-section__white::before{
-        bottom: -3%;
+        top: -3%;
     }
     .resume-block__left .resume-item:hover,
     .resume-block__left .resume-item:focus{
@@ -87,9 +87,6 @@
 }
 
 @media only screen and (max-width: 479px) {
-    .portfolio::after{
-        bottom: -2%;
-    }
     .category-filter{
         @include ptr(padding-top,140);
     }

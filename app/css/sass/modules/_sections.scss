@@ -254,6 +254,7 @@
 .resume-parent{
     @include row(flex);
     flex-wrap: wrap;
+    @include ptr(margin, 80 0 0 0);
 }
 .resume-part{
     @include col(2);
@@ -344,8 +345,6 @@
     content: '';
     position: absolute;
     top: 50%;
-    /*@include ptr(width,20);
-    @include ptr(height,20);*/
     border: 10px solid transparent;
     border: 1rem solid transparent;
     @include ptr(margin,-10 0 0 0);
@@ -378,6 +377,55 @@
 .resume-item h4{
     font-weight: bold;
     @include ptr(margin,0 0 10 0);
+}
+
+.about-me{
+    @include row(flex);
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.resume-desc{
+    @include col(2);
+    @include vertical;
+    font-weight: 300;
+    font-family: $font1;
+    @include fluidFontSize(14px,22px,480px,1024px,26px,18px);
+}
+.resume-info{
+    @include col(4);
+    @include vertical;
+    @include ptr(border-radius,5);
+    @include ptr(padding,30 15);
+    background-color: $color3;
+    text-align: center;
+    color: $color2;
+    transition: all .5s linear;
+    &:hover{
+        background-color: #fff;
+    }
+    h4{
+        font-weight: bold;
+        text-transform: uppercase;
+        @include fluidFontSize(14px,20px,480px,1024px,24px,17px);
+    }
+    p{
+        font-weight: 300;
+        @include ptr(margin,30 0 0);
+        @include fluidFontSize(12px,14px,480px,1024px,18px,13px);
+    }
+}
+.resume__social{
+    ul{
+        flex-direction: row;
+    }
+    li{
+        a{
+            color: $color1;
+            &:hover{
+                color: #fff;
+            }
+        }
+    }
 }
 
 /*===Section-Contacts===*/

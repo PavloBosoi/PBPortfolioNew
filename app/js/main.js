@@ -1,7 +1,8 @@
 $(function () {
     var ScreenWidth = $(window).width(),
         ScreenHeight = $(window).height(),
-        TopMenuHeight = $('.js-anchor-menu').outerHeight();
+        TopMenuHeight = $('.js-top-menu').outerHeight(),
+        fixedHamburger = $(".sand-menu");
 
     //обработка тачей
     if (isTouch()) {
@@ -21,16 +22,23 @@ $(function () {
     }
 
 
-/*    $(".js-menu").on('click', function(e){
-        $(this).siblings('ul').slideToggle(300);
-        $(this).toggleClass("active");
-    });*/
+    $(".js-menu a").on('click', function(e){
+        var elToggle = $('.js-menu'),
+            elSlideLeft = elToggle.find('.js-slide-effect-left'),
+            elSlideRight = elToggle.find('.js-slide-effect-right');
+        elToggle.fadeToggle(500);
+        fixedHamburger.removeClass('active');
+        elToggle.toggleClass("active");
+        slideEffectLeft(elSlideLeft,false,-200);
+        slideEffectRight(elSlideRight,false,-200);
+        $(this).closest('.menu').animate({'z-index':'1'},500);
+    });
 
 
 
 
     //main menu slide
-    $(".sand-menu").click(function(){
+    fixedHamburger.click(function(){
         var elToggle = $('.js-menu'),
             elSlideLeft = elToggle.find('.js-slide-effect-left'),
             elSlideRight = elToggle.find('.js-slide-effect-right');
@@ -134,7 +142,7 @@ $(function () {
 
 
 
-
+    //anchor position
     function anchorPosition(scroll){
         var home = $('#home').offset().top,
             portfolio = $('#portfolio').offset().top,
@@ -169,6 +177,7 @@ $(function () {
         }
     }
 
+    //anchor scrolling and click
     function frontAnchor(topMenuHeight){
 
         $(window).scroll(function () {
@@ -180,11 +189,11 @@ $(function () {
             e.preventDefault();
             var curSection = '#'+$(this).attr('title').toLowerCase(),
                 offsetTop = $(curSection).offset().top - topMenuHeight + 1;
-            console.log(offsetTop);
             $(this).closest('li').addClass();
             $("html, body").animate({ scrollTop: offsetTop }, "slow");
         });
     }
+
     setTimeout(function(){
         frontAnchor(TopMenuHeight);
         anchorPosition(window.pageYOffset + TopMenuHeight);
