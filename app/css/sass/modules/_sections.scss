@@ -75,18 +75,6 @@
         background-color: rgba(17, 21, 25, 0.8);
         z-index: -1;
     }
-/*    &::after{
-        content: "";
-        position: absolute;
-        bottom: -7%;
-        left: -5%;
-        width: 110%;
-        @include ptr(height,100);
-        z-index: 2;
-
-        background-color: #fff;
-        transform: rotate(2deg);
-    }*/
 }
 .grid{
     position: relative;

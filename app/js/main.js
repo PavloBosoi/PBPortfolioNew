@@ -144,7 +144,7 @@ $(function () {
 
 
     //anchor position
-    function anchorPosition(scroll,topMenuHeight){
+    function anchorPosition(scroll){
         var home = $('#home'),
             portfolio = $('#portfolio'),
             skills = $('#skills'),
@@ -189,91 +189,62 @@ $(function () {
 
     }
 
-
-
-    function effectTopDown(el){
-        el.animate({'top':0,'opacity':1},500);
-    }
-
-    function effectTopUp(el){
-        el.animate({'top':'-200px','opacity':0},500);
-    }
 function abc() {
-    var home = $('#home'),
-        portfolio = $('#portfolio'),
-        skills = $('#skills'),
-        resume = $('#resume'),
-        contacts = $('#contacts');
-    $(window).scroll(function(){
         var scrollBottom = $(this).scrollTop() + $(window).height()/* - spaceForEffect*/;
-/*        var skillsTop = skills.find('.js-top-effect'),
-            skillsLeft = skills.find('.js-l-effect'),
-            skillsRight = skills.find('.js-r-effect'),
 
-            resumeTop = resume.find('.js-top-effect'),
-            resumeLeft = resume.find('.js-l-effect'),
-            resumeRight = resume.find('.js-r-effect');
-
-        if(scrollBottom > skillsTop.offset().top){
-            skillsTop.addClass('show');
-            skillsLeft.addClass('show');
-            skillsRight.addClass('show');
-        }
-        else{
-            skillsTop.removeClass('show');
-            skillsLeft.removeClass('show');
-            skillsRight.removeClass('show');
-        }
-
-        if(scrollBottom > resumeTop.offset().top){
-            resumeTop.addClass('show');
-            resumeLeft.addClass('show');
-            resumeRight.addClass('show');
-        }
-        else{
-            resumeTop.removeClass('show');
-            resumeLeft.removeClass('show');
-            resumeRight.removeClass('show');
-        }*/
-
-        var scroll = $(this).scrollTop();
         var topEffect = $('.js-top-effect'),
+            bottomEffect = $('.js-bottom-effect'),
             leftEffect = $('.js-l-effect'),
-            rightEffect = $('.js-r-effect');
-        topEffect.each(function(){
-            if($(this).offset().top > scroll && $(this).offset().top < scroll + $(window).height()){
-                $(this).addClass('show');
-            }
-            else{
-                $(this).removeClass('show');
-            }
-        });
-        leftEffect.each(function(){
-            if($(this).offset().top > scroll && $(this).offset().top < scroll + $(window).height()){
-                $(this).addClass('show');
-            }
-            else{
-                $(this).removeClass('show');
-            }
-        });
-        rightEffect.each(function(){
-            if($(this).offset().top > scroll && $(this).offset().top < scroll + $(window).height()){
-                $(this).addClass('show');
-            }
-            else{
-                $(this).removeClass('show');
-            }
-        });
+            rightEffect = $('.js-r-effect'),
+            opacityEffect = $('.js-opacity-effect');
+    $(window).scroll(function() {
+        sideEffects(topEffect);
+        sideEffects(bottomEffect);
+        sideEffects(leftEffect);
+        sideEffects(rightEffect);
+        sideEffects(opacityEffect);
     });
+    sideEffects(topEffect);
+    sideEffects(bottomEffect);
+    sideEffects(leftEffect);
+    sideEffects(rightEffect);
+    sideEffects(opacityEffect);
+
 }
 abc();
+    console.log($(this).scrollTop());
+
+    function sideEffects(el){
+        var tempScrollTop, currentScrollTop = 0;
+
+        $(window).scroll(function(){
+            currentScrollTop = $(window).scrollTop();
+            if (tempScrollTop < currentScrollTop ){
+
+            }//scrolling down
+            else if (tempScrollTop > currentScrollTop){
+
+            }//scrolling up
+            tempScrollTop = currentScrollTop;
+        });
+        var scroll = $(this).scrollTop();
+            el.each(function(){
+                var halfHeight = $(this).outerHeight()/1.5;
+                if($(this).offset().top > scroll - halfHeight && $(this).offset().top < scroll - halfHeight + $(window).height()){
+                    $(this).addClass('show');
+                }
+                else{
+                    $(this).removeClass('show');
+                }
+            });
+    }
 
     //anchor scrolling and click
     function frontAnchor(topMenuHeight){
 
         $(window).scroll(function () {
             var scroll = $(this).scrollTop() + topMenuHeight;
-            anchorPosition(scroll,TopMenuHeight);
+            anchorPosition(scroll);
         });
 
         $('.js-anchor-menu li a').on('click',function(e){
@@ -287,7 +258,7 @@ abc();
 
     setTimeout(function(){
         frontAnchor(TopMenuHeight);
-        anchorPosition(window.pageYOffset + TopMenuHeight,TopMenuHeight);
+        anchorPosition(window.pageYOffset + TopMenuHeight);
     },500);
 
 
