@@ -2,7 +2,8 @@ $(function () {
     var ScreenWidth = $(window).width(),
         ScreenHeight = $(window).height(),
         TopMenuHeight = $('.js-top-menu').outerHeight(),
-        fixedHamburger = $(".sand-menu");
+        fixedHamburger = $(".sand-menu"),
+        spaceForEffect = 200;
 
     //обработка тачей
     if (isTouch()) {
@@ -143,46 +144,136 @@ $(function () {
 
 
     //anchor position
-    function anchorPosition(scroll){
-        var home = $('#home').offset().top,
-            portfolio = $('#portfolio').offset().top,
-            skills = $('#skills').offset().top,
-            resume = $('#resume').offset().top,
-            contacts = $('#contacts').offset().top;
+    function anchorPosition(scroll,topMenuHeight){
+        var home = $('#home'),
+            portfolio = $('#portfolio'),
+            skills = $('#skills'),
+            resume = $('#resume'),
+            contacts = $('#contacts');
+        var homePos = home.offset().top,
+            portfolioPos = portfolio.offset().top,
+            skillsPos = skills.offset().top,
+            resumePos = resume.offset().top,
+            contactsPos = contacts.offset().top;
         var homeLi = $('.menu-home'),
             portfolioLi = $('.menu-portfolio'),
             skillsLi = $('.menu-skills'),
             resumeLi = $('.menu-resume'),
             contactsLi = $('.menu-contacts');
+        var homeHeight = home.outerHeight(),
+            portfolioHeight = portfolio.outerHeight(),
+            skillsHeight = skills.outerHeight(),
+            resumeHeight = resume.outerHeight(),
+            contactsHeight = contacts.outerHeight();
 
-        if (scroll >= home && scroll < portfolio){
+        if (scroll >= homePos && scroll < portfolioPos){
             homeLi.siblings().removeClass('active');
             homeLi.addClass('active');
         }
-        if (scroll >= portfolio && scroll < skills){
+        if (scroll >= portfolioPos && scroll < skillsPos){
             portfolioLi.siblings().removeClass('active');
             portfolioLi.addClass('active');
         }
-        if (scroll >= skills && scroll < resume){
+        if (scroll >= skillsPos && scroll < resumePos){
             skillsLi.siblings().removeClass('active');
             skillsLi.addClass('active');
         }
-        if (scroll >= resume && scroll < contacts){
+        if (scroll >= resumePos && scroll < contactsPos){
             resumeLi.siblings().removeClass('active');
             resumeLi.addClass('active');
         }
-        if (scroll >= contacts){
+        if (scroll >= contactsPos){
             contactsLi.siblings().removeClass('active');
             contactsLi.addClass('active');
         }
+
     }
+
+
+
+    function effectTopDown(el){
+        el.animate({'top':0,'opacity':1},500);
+    }
+
+    function effectTopUp(el){
+        el.animate({'top':'-200px','opacity':0},500);
+    }
+function abc() {
+    var home = $('#home'),
+        portfolio = $('#portfolio'),
+        skills = $('#skills'),
+        resume = $('#resume'),
+        contacts = $('#contacts');
+    $(window).scroll(function(){
+        var scrollBottom = $(this).scrollTop() + $(window).height()/* - spaceForEffect*/;
+/*        var skillsTop = skills.find('.js-top-effect'),
+            skillsLeft = skills.find('.js-l-effect'),
+            skillsRight = skills.find('.js-r-effect'),
+
+            resumeTop = resume.find('.js-top-effect'),
+            resumeLeft = resume.find('.js-l-effect'),
+            resumeRight = resume.find('.js-r-effect');
+
+        if(scrollBottom > skillsTop.offset().top){
+            skillsTop.addClass('show');
+            skillsLeft.addClass('show');
+            skillsRight.addClass('show');
+        }
+        else{
+            skillsTop.removeClass('show');
+            skillsLeft.removeClass('show');
+            skillsRight.removeClass('show');
+        }
+
+        if(scrollBottom > resumeTop.offset().top){
+            resumeTop.addClass('show');
+            resumeLeft.addClass('show');
+            resumeRight.addClass('show');
+        }
+        else{
+            resumeTop.removeClass('show');
+            resumeLeft.removeClass('show');
+            resumeRight.removeClass('show');
+        }*/
+
+        var scroll = $(this).scrollTop();
+        var topEffect = $('.js-top-effect'),
+            leftEffect = $('.js-l-effect'),
+            rightEffect = $('.js-r-effect');
+        topEffect.each(function(){
+            if($(this).offset().top > scroll && $(this).offset().top < scroll + $(window).height()){
+                $(this).addClass('show');
+            }
+            else{
+                $(this).removeClass('show');
+            }
+        });
+        leftEffect.each(function(){
+            if($(this).offset().top > scroll && $(this).offset().top < scroll + $(window).height()){
+                $(this).addClass('show');
+            }
+            else{
+                $(this).removeClass('show');
+            }
+        });
+        rightEffect.each(function(){
+            if($(this).offset().top > scroll && $(this).offset().top < scroll + $(window).height()){
+                $(this).addClass('show');
+            }
+            else{
+                $(this).removeClass('show');
+            }
+        });
+    });
+}
+abc();
 
     //anchor scrolling and click
     function frontAnchor(topMenuHeight){
 
         $(window).scroll(function () {
             var scroll = $(this).scrollTop() + topMenuHeight;
-            anchorPosition(scroll);
+            anchorPosition(scroll,TopMenuHeight);
         });
 
         $('.js-anchor-menu li a').on('click',function(e){
@@ -196,7 +287,7 @@ $(function () {
 
     setTimeout(function(){
         frontAnchor(TopMenuHeight);
-        anchorPosition(window.pageYOffset + TopMenuHeight);
+        anchorPosition(window.pageYOffset + TopMenuHeight,TopMenuHeight);
     },500);
 
 

@@ -90,6 +90,38 @@
 	right: -200px;
 }
 
+.js-top-effect{
+	position: relative;
+	opacity: 0;
+	top: -200px;
+	transition: all .8s linear;
+}
+.js-top-effect.show{
+	opacity: 1;
+	top: 0;
+}
+
+.js-l-effect,
+.js-r-effect{
+	position: relative;
+	opacity: 0;
+	transition: all .8s linear;
+}
+.js-l-effect{
+	left: -100%;
+}
+.js-r-effect{
+	right: -100%;
+}
+.js-l-effect.show{
+	left: 0;
+	opacity: 1;
+}
+.js-r-effect.show{
+	right: 0;
+	opacity: 1;
+}
+
 /*---btn-all---*/
 .btn-all{
 	position: relative;

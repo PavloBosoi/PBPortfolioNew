@@ -25,7 +25,7 @@
 .g-section__white::before{
     content: '';
     position: absolute;
-    top: -5%;
+    top: -6%;
     left: -5%;
     width: 110%;
     @include ptr(height,100);
