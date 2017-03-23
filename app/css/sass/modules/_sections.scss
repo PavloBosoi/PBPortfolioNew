@@ -2,61 +2,6 @@
    Module/Sections
    ======================= */
 
-/*===Section-About===*/
-.about{
-    background: transparent url("../images/main-bg.jpg") no-repeat fixed 50% 0;
-    background-size: cover;
-    z-index: 1;
-    position: relative;
-    .container-fluid{
-        height: 100%;
-    }
-    &::before{
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(17, 21, 25, 0.8);
-        z-index: -1;
-    }
-}
-.about-parent{
-    @include row(flex);
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-}
-.about-photo{
-    /*@include col(3);
-    @include col-lg(4);
-    @include col-sm(12);
-    text-align: center;*/
-    @include ptr(padding,0 15);
-    img{
-        @include ptr(width,250);
-        height: auto;
-        border-radius: 50%;
-        border: 5px solid #fff;
-    }
-}
-.about-profession{
-    /*@include col(7);
-    @include col-lg(8);
-    @include col-sm(12);*/
-    @include ptr(padding,0 15);
-    h1{
-        @include ptr(margin,0 0 20 0);
-        font-family: $font3;
-        @include fluidFontSize(28px,52px,480px,1024px,70px);
-    }
-    p{
-        @include fluidFontSize(16px,26px,480px,1024px,30px);
-    }
-}
-
-
 /*===Section-Portfolio===*/
 .portfolio{
     background: transparent url("../images/portfolio-bg.jpg") no-repeat fixed 50% 0;
@@ -176,6 +121,7 @@
     img{
         border-radius: 50%;
         display: block;
+        min-width: 100%;
     }
 }
 
@@ -261,10 +207,10 @@
     @include ptr(width,2);
     height: 100%;
 }
-.resume-block__left::before{
+.resume-block__l::before{
     @include ptr(right,9);
 }
-.resume-block__right::before{
+.resume-block__r::before{
     @include ptr(left,9);
 }
 .wrap-resume-item{
@@ -274,10 +220,10 @@
 .wrap-resume-item:first-child{
     margin: 0;
 }
-.resume-block__left .wrap-resume-item{
+.resume-block__l .wrap-resume-item{
     @include ptr(padding,0 60 0 0);
 }
-.resume-block__right .wrap-resume-item{
+.resume-block__r .wrap-resume-item{
     @include ptr(padding,0 0 0 60);
 }
 .wrap-resume-item::before{
@@ -292,10 +238,10 @@
     @include ptr(margin,-10 0 0 0);
     transition: all .5s linear;
 }
-.resume-block__left .wrap-resume-item::before{
+.resume-block__l .wrap-resume-item::before{
     right: 0;
 }
-.resume-block__right .wrap-resume-item::before{
+.resume-block__r .wrap-resume-item::before{
     left: 0;
 }
 .wrap-resume-item:hover::before,
@@ -313,19 +259,19 @@
     @include fluidFontSize(12px,16px,480px,1024px,20px,14px);
     transition: all .5s linear;
 }
-.resume-block__left .resume-item{
+.resume-block__l .resume-item{
     left: 0;
 }
-.resume-block__right .resume-item{
+.resume-block__r .resume-item{
     right: 0;
 }
-.resume-block__left .resume-item:hover,
-.resume-block__left .resume-item:focus{
+.resume-block__l .resume-item:hover,
+.resume-block__l .resume-item:focus{
     background-color: #fff;
     @include ptr(left,20);
 }
-.resume-block__right .resume-item:hover,
-.resume-block__right .resume-item:focus{
+.resume-block__r .resume-item:hover,
+.resume-block__r .resume-item:focus{
     background-color: #fff;
     @include ptr(right,20);
 }
@@ -338,27 +284,27 @@
     @include ptr(margin,-10 0 0 0);
     transition: all .5s linear;
 }
-.resume-block__left .resume-item::after{
+.resume-block__l .resume-item::after{
     border-left: 10px solid $color3;
     border-left: 1rem solid $color3;
     @include ptr(right,-20);
 }
-.resume-block__right .resume-item::after{
+.resume-block__r .resume-item::after{
     border-right: 10px solid $color3;
     border-right: 1rem solid $color3;
     @include ptr(left,-20);
 }
-.resume-block__left .resume-item:hover::before,
-.resume-block__left .resume-item:focus::before,
-.resume-block__left .resume-item:hover::after,
-.resume-block__left .resume-item:focus::after{
+.resume-block__l .resume-item:hover::before,
+.resume-block__l .resume-item:focus::before,
+.resume-block__l .resume-item:hover::after,
+.resume-block__l .resume-item:focus::after{
     border-left: 10px solid #fff;
     border-left: 1rem solid #fff;
 }
-.resume-block__right .resume-item:hover::before,
-.resume-block__right .resume-item:focus::before,
-.resume-block__right .resume-item:hover::after,
-.resume-block__right .resume-item:focus::after{
+.resume-block__r .resume-item:hover::before,
+.resume-block__r .resume-item:focus::before,
+.resume-block__r .resume-item:hover::after,
+.resume-block__r .resume-item:focus::after{
     border-right: 10px solid #fff;
     border-right: 1rem solid #fff;
 }
@@ -374,6 +320,7 @@
 }
 .resume-desc{
     @include col(2);
+    @include col-xs(1);
     @include vertical;
     font-weight: 300;
     font-family: $font1;
@@ -381,6 +328,9 @@
 }
 .resume-info{
     @include col(4);
+    @include col-lg(3);
+    @include col-md(2);
+    @include col-xs(1);
     @include vertical;
     @include ptr(border-radius,5);
     @include ptr(padding,30 15);
@@ -456,4 +406,18 @@
 .error input,
 .error textarea{
     border: 1px solid red;
+}
+div.wpcf7-validation-errors{
+    display: none !important;
+}
+span.wpcf7-not-valid-tip {
+    color: #f00;
+    @include fluidFontSize(12px,14px,480px,1024px,18px,13px);
+    font-weight: normal;
+    display: block;
+    position: absolute;
+    @include ptr(bottom,-30);
+    left: 0;
+    line-height: normal;
+    white-space: nowrap;
 }

@@ -51,6 +51,9 @@
         &.vk:hover a{
             background-color: #4c75a3;
         }
+        &.fb:hover a{
+            background-color: #4867aa;
+        }
         &.li:hover a{
             background-color: #0077b5;
         }
@@ -81,7 +84,8 @@
         a{
             color: #fff;
             font-family: $font3;
-            @include fluidFontSize(32px,50px,480px,1023px,68px,40px);
+            @include fluidFontSize(22px,50px,480px,1023px,54px,34px);
+            @include ptr(line-height,72);
             text-transform: uppercase;
             position: relative;
             text-decoration: none;

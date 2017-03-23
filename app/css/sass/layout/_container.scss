@@ -11,6 +11,7 @@
     @include ptr(padding,0 0 0 100);
     display: flex;
     flex-direction: column;
+    opacity: 0;
 }
 .content {
 /*    @include ptr(padding,0 0 488 0);*/

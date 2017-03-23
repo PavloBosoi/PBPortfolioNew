@@ -31,6 +31,7 @@
 		flex-wrap: wrap;
 		background-color: $color2;
 		@include ptr(padding,40 20);
+		overflow: hidden;
 	}
 	.item-img,
 	.item-text{

@@ -21,7 +21,9 @@
 }
 
 @media only screen and (max-width: 1023px) {
-
+    .main-menu li a{
+        @include ptr(line-height,66);
+    }
 }
 
 @media only screen and (max-width: 767px) {
@@ -39,8 +41,8 @@
     .wrap-resume-item::before{
         display: none;
     }
-    .resume-block__left .wrap-resume-item,
-    .resume-block__right .wrap-resume-item{
+    .resume-block__l .wrap-resume-item,
+    .resume-block__r .wrap-resume-item{
         padding: 0;
     }
     .resume-item::after{
@@ -50,12 +52,12 @@
     .g-section__white::before{
         top: -3%;
     }
-    .resume-block__left .resume-item:hover,
-    .resume-block__left .resume-item:focus{
+    .resume-block__l .resume-item:hover,
+    .resume-block__l .resume-item:focus{
         left: 0;
     }
-    .resume-block__right .resume-item:hover,
-    .resume-block__right .resume-item:focus{
+    .resume-block__r .resume-item:hover,
+    .resume-block__r .resume-item:focus{
         right: 0;
     }
     .menu-feedback-copy p{
@@ -64,6 +66,28 @@
     .menu-feedback-contacts{
         display: flex;
         justify-content: space-between;
+    }
+    .js-top-effect{
+        opacity: 1;
+        top: 0;
+    }
+    .js-bottom-effect{
+        opacity: 1;
+        bottom: 0;
+    }
+    .js-l-effect{
+        opacity: 1;
+        left: 0;
+    }
+    .js-r-effect{
+        opacity: 1;
+        right: 0;
+    }
+    .js-opacity-effect{
+        opacity: 1;
+    }
+    .main-menu li a{
+        @include ptr(line-height,58);
     }
     html{
         font-size: 8px;
@@ -83,6 +107,9 @@
     .btn-form{
         margin: 0 auto;
         float: none;;
+    }
+    .main-menu li a{
+        @include ptr(line-height,48);
     }
 }
 
@@ -104,6 +131,12 @@
     }
     .item-text{
         @include ptr(margin-top,40);
+    }
+    .resume-info{
+        @include ptr(margin-top,40);
+    }
+    .main-menu li a{
+        @include ptr(line-height,44);
     }
     html{
         font-size: 7px;

@@ -1,17 +1,11 @@
-
 /* Site grid */
 @import "grid/index";
 
 /* Site settings */
 @import "utilites/index";
 
-/* Vendor */
-//@import "vendor/bootstrap";
-//@import "vendor/foundation";
-
-/* Override */
-//@import "vendor-override/bootsrap";
-//@import "vendor-override/foundation";
+/* First screen */
+@import "first-screen/first-screen";
 
 /* Base */
 @import "base/index";

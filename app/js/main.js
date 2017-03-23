@@ -1,3 +1,9 @@
+/*$('header').css({'opacity': '1'});*/
+$(window).on('load',function () {
+    //$('body').css({'overflow': 'visible'});
+    $('.wrapper').css({'opacity': '1'});
+});
+
 $(function () {
     var ScreenWidth = $(window).width(),
         ScreenHeight = $(window).height(),
@@ -189,56 +195,6 @@ $(function () {
 
     }
 
-function abc() {
-        var scrollBottom = $(this).scrollTop() + $(window).height()/* - spaceForEffect*/;
-
-        var topEffect = $('.js-top-effect'),
-            bottomEffect = $('.js-bottom-effect'),
-            leftEffect = $('.js-l-effect'),
-            rightEffect = $('.js-r-effect'),
-            opacityEffect = $('.js-opacity-effect');
-    $(window).scroll(function() {
-        sideEffects(topEffect);
-        sideEffects(bottomEffect);
-        sideEffects(leftEffect);
-        sideEffects(rightEffect);
-        sideEffects(opacityEffect);
-    });
-    sideEffects(topEffect);
-    sideEffects(bottomEffect);
-    sideEffects(leftEffect);
-    sideEffects(rightEffect);
-    sideEffects(opacityEffect);
-
-}
-abc();
-    console.log($(this).scrollTop());
-
-    function sideEffects(el){
-        var tempScrollTop, currentScrollTop = 0;
-
-        $(window).scroll(function(){
-            currentScrollTop = $(window).scrollTop();
-            if (tempScrollTop < currentScrollTop ){
-
-            }//scrolling down
-            else if (tempScrollTop > currentScrollTop){
-
-            }//scrolling up
-            tempScrollTop = currentScrollTop;
-        });
-        var scroll = $(this).scrollTop();
-            el.each(function(){
-                var halfHeight = $(this).outerHeight()/1.5;
-                if($(this).offset().top > scroll - halfHeight && $(this).offset().top < scroll - halfHeight + $(window).height()){
-                    $(this).addClass('show');
-                }
-                else{
-                    $(this).removeClass('show');
-                }
-            });
-    }
-
     //anchor scrolling and click
     function frontAnchor(topMenuHeight){
 
@@ -260,6 +216,41 @@ abc();
         frontAnchor(TopMenuHeight);
         anchorPosition(window.pageYOffset + TopMenuHeight);
     },500);
+
+    function sideEffects(el){
+        var scroll = $(this).scrollTop();
+        el.each(function(){
+            var halfHeight = $(this).outerHeight()/2;
+            if($(this).offset().top > scroll - halfHeight && $(this).offset().top < scroll - halfHeight + $(window).height()){
+                $(this).addClass('show');
+            }
+            else{
+                $(this).removeClass('show');
+            }
+        });
+    }
+
+    function allEffects(){
+        //Effects
+        var topEffect = $('.js-top-effect'),
+            bottomEffect = $('.js-bottom-effect'),
+            leftEffect = $('.js-l-effect'),
+            rightEffect = $('.js-r-effect'),
+            opacityEffect = $('.js-opacity-effect');
+
+        $(window).scroll(function() {
+            sideEffects(topEffect);
+            sideEffects(bottomEffect);
+            sideEffects(leftEffect);
+            sideEffects(rightEffect);
+            sideEffects(opacityEffect);
+        });
+        sideEffects(topEffect);
+        sideEffects(bottomEffect);
+        sideEffects(leftEffect);
+        sideEffects(rightEffect);
+        sideEffects(opacityEffect);
+    }
 
 
 
@@ -360,7 +351,10 @@ abc();
     if(ScreenWidth < 992){
 
     }
-    if(ScreenWidth < 768){
+    if(ScreenWidth > 768){
+        allEffects();
+    }
+    if(ScreenWidth > 768){
 
     }
     if(ScreenWidth < 580){
@@ -378,6 +372,8 @@ abc();
         setTimeout(function(){
             topMenuHide($('.js-top-menu'),150);
         },500);
+
+        allEffects();
 
         /*setTimeout(function(){
             $('.portfolio-project').fsort({

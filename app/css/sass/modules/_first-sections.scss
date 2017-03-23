@@ -1,0 +1,51 @@
+/* ==|====================
+   Section-About
+   ======================= */
+.about{
+    background: transparent url("../images/main-bg.jpg") no-repeat fixed 50% 0;
+    background-size: cover;
+    z-index: 1;
+    position: relative;
+    .container-fluid{
+        height: 100%;
+    }
+    &::before{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(17, 21, 25, 0.8);
+        z-index: -1;
+    }
+}
+.about-parent{
+    @include row(flex);
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+.about-photo{
+    @include ptr(padding,0 15);
+    img{
+        @include ptr(width,250);
+        height: auto;
+        border-radius: 50%;
+        border: 5px solid #fff;
+    }
+}
+.about-profession{
+    /*@include col(7);
+    @include col-lg(8);
+    @include col-sm(12);*/
+    @include ptr(padding,0 15);
+    h1{
+        @include ptr(margin,0 0 20 0);
+        font-family: $font3;
+        @include fluidFontSize(28px,52px,480px,1024px,70px);
+    }
+    p{
+        @include fluidFontSize(16px,26px,480px,1024px,30px);
+    }
+}
