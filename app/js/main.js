@@ -278,7 +278,7 @@ $(function () {
 
     /*===CONTACT===*/
     function formLabel(el){
-        $(el).on('click contextmenu',function(e){
+        $(el).on('click contextmenu focusin',function(e){
             $(el).each(function(){
                 if($(this).find('input').val() === '' || $(this).find('textarea').val() === ''){
                     //если инпут или текстареа не пусты

@@ -407,7 +407,8 @@
 .error textarea{
     border: 1px solid red;
 }
-div.wpcf7-validation-errors{
+div.wpcf7-validation-errors,
+.screen-reader-response{
     display: none !important;
 }
 span.wpcf7-not-valid-tip {
@@ -416,7 +417,7 @@ span.wpcf7-not-valid-tip {
     font-weight: normal;
     display: block;
     position: absolute;
-    @include ptr(bottom,-30);
+    @include ptr(bottom,-25);
     left: 0;
     line-height: normal;
     white-space: nowrap;
