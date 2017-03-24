@@ -5,7 +5,7 @@
 .text_edit h1 {
     font-weight: 400;
     font-family: $font2;
-    @include fluidFontSize(24px,38px,480px,1023px,28px);
+    @include fluidFontSize(24px,38px,480px,1023px,42px,28px);
     @include ptr(margin,30 0);
     color: $color1;
 }
@@ -13,7 +13,7 @@
 .text_edit h2 {
     font-weight: 400;
     font-family: $font2;
-    @include fluidFontSize(24px,38px,480px,1023px,28px);
+    @include fluidFontSize(24px,38px,480px,1023px,42px,28px);
     @include ptr(margin,30 0 10);
     color: $color1;
 }
@@ -24,7 +24,7 @@
 .text_edit h3{
     font-weight: 400;
     font-family: $font2;
-    @include fluidFontSize(20px,35px,480px,1023px,24px);
+    @include fluidFontSize(20px,35px,480px,1023px,49px,24px);
     @include ptr(margin,30 0 10);
     color: $color1;
 }
@@ -34,7 +34,7 @@
 .text_edit h4{
     font-weight: 300;
     font-family: $font1;
-    @include fluidFontSize(14px,18px,480px,1023px,18px);
+    @include fluidFontSize(14px,18px,480px,1023px,22px,16px);
     text-decoration: underline;
 }
 
@@ -49,7 +49,7 @@
 .text_edit p {
     font-weight: 300;
     font-family: $font1;
-    @include fluidFontSize(14px,16px,480px,1023px,16px);
+    @include fluidFontSize(14px,16px,480px,1023px,20px,16px);
     color: $color1;
     @include ptr(margin-bottom,15);
 }
@@ -62,7 +62,7 @@
     @include ptr(margin,0 0 30 15);
 }
 .text_edit ul {
-    @include fluidFontSize(14px,16px,480px,1023px,16px);
+    @include fluidFontSize(14px,16px,480px,1023px,20px,16px);
     text-align: left;
     @include ptr(margin,30 0 30 15);
 }
@@ -101,7 +101,7 @@
 }
 
 .text_edit ol {
-    @include fluidFontSize(14px,16px,480px,1023px,16px);
+    @include fluidFontSize(14px,16px,480px,1023px,20px,16px);
     text-align: left;
     @include ptr(margin,20 0 0 15);
     counter-reset: li;

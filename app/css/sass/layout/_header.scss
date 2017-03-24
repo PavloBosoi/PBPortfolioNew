@@ -84,7 +84,7 @@
         a{
             color: #fff;
             font-family: $font3;
-            @include fluidFontSize(22px,50px,480px,1023px,54px,34px);
+            @include fluidFontSize(24px,50px,480px,1023px,54px,34px);
             @include ptr(line-height,72);
             text-transform: uppercase;
             position: relative;

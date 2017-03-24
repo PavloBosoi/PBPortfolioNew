@@ -36,16 +36,13 @@
     }
 }
 .about-profession{
-    /*@include col(7);
-    @include col-lg(8);
-    @include col-sm(12);*/
     @include ptr(padding,0 15);
     h1{
         @include ptr(margin,0 0 20 0);
         font-family: $font3;
-        @include fluidFontSize(28px,52px,480px,1024px,70px);
+        @include fluidFontSize(28px,52px,480px,1024px,56px,40px);
     }
     p{
-        @include fluidFontSize(16px,26px,480px,1024px,30px);
+        @include fluidFontSize(16px,26px,480px,1024px,30px,20px);
     }
 }
