@@ -123,6 +123,13 @@ $(function () {
     scrollTop($('.js-to-top'));
 
 
+    //top menu background
+    if($(window).scrollTop() > 0){
+        $('.js-top-menu').addClass('active');
+    } else {
+        $('.js-top-menu').removeClass('active');
+    }
+
     $(window).scroll(function () {
         if ($(this).scrollTop() > 0) {
             $('.js-top-menu').addClass('active');
@@ -220,7 +227,7 @@ $(function () {
     function sideEffects(el){
         var scroll = $(this).scrollTop();
         el.each(function(){
-            var halfHeight = $(this).outerHeight()/2;
+            var halfHeight = $(this).outerHeight()/3;
             if($(this).offset().top > scroll - halfHeight && $(this).offset().top < scroll - halfHeight + $(window).height()){
                 $(this).addClass('show');
             }
@@ -259,7 +266,7 @@ $(function () {
 
     //plugin fsort
     $('.portfolio-project').fsort({
-        ppp: 4
+        ppp: 5
     });
 
 

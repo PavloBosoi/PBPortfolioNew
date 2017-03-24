@@ -31,6 +31,8 @@ textarea{
     @include ptr(border-radius,5);
     border: 1px solid $color2;
     color: $color2;
+    font-family: $font2;
+    @include fluidFontSize(14px,16px,480px,1023px,30px,16px);
 }
 
 textarea{

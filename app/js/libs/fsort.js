@@ -17,7 +17,10 @@
                 el = this.element,
                 tag = this.config.tag,
                 more = this.config.more;
-            that.showAllPosts(ppp,el);
+
+            setTimeout(function() {
+                that.showAllPosts(ppp, el);
+            },500);
 
             var cat = [],
                 catIter = 0,
@@ -191,8 +194,8 @@
             $(el).each(function(index){//проходимся по всем элементам
                 elWidth = $(this).outerWidth();
                 if($(this).hasClass('show')){
-                    if(curLeft + elWidth <= parentWidth){//если индекс текущего эл. меньше заданого выводом
-                        $(this).css({'left': curLeft, 'top': curTop});//даем текущему эл. блок
+                    if(curLeft + elWidth <= parentWidth){
+                        $(this).css({'left': curLeft, 'top': curTop});
                         curLeft += $(this).outerWidth();
                     }
                     else{

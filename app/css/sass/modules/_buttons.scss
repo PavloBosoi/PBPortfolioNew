@@ -155,6 +155,7 @@
 	color: #fff;
 	text-decoration: none;
 	letter-spacing: normal;
+	font-family: $font2;
 
 	background-color: $color1;
 	@include ptr(border-radius,25);
@@ -207,6 +208,7 @@
 	@include ptr(margin,20 0 0 0);
 	float: right;
 	transition: all .5s linear;
+	font-family: $font2;
 }
 .btn-form input{
 	background-color: transparent;
@@ -215,23 +217,5 @@
 	text-transform: uppercase;
 	color: #fff;
 	cursor: pointer;
-}
-.btn-form::before{
-	content: '\f1d9';
-	position: absolute;
-	top: 0;
-	@include ptr(left,-40);
-	@include ptr(width,38);
-	@include ptr(height,38);
-	@include ptr(font-size,18);
-	color: $color1;
-	background-color: #fff;
-	border: 1px solid $color1;
-	@include ptr(border-radius,25);
-	@include ptr(line-height,38);
-	font-family: FontAwesome;
-	transition: all .5s linear;
-}
-.btn-form:hover::before{
-	left: 0;
+	font-family: $font2;
 }
