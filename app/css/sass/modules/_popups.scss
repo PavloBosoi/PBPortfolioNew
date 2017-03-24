@@ -8,6 +8,9 @@
 	@include ptr(top,14);
 	@include ptr(width,30);
 	@include ptr(height,30);
+	&::after{
+		top: 0;
+	}
 }
 .popup-block{
 	display: none;

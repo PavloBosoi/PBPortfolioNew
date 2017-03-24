@@ -173,31 +173,41 @@ $(function () {
             skillsLi = $('.menu-skills'),
             resumeLi = $('.menu-resume'),
             contactsLi = $('.menu-contacts');
-        var homeHeight = home.outerHeight(),
-            portfolioHeight = portfolio.outerHeight(),
-            skillsHeight = skills.outerHeight(),
-            resumeHeight = resume.outerHeight(),
-            contactsHeight = contacts.outerHeight();
+        var homeHref = homeLi.find('a').attr('href'),
+            portfolioHref = portfolioLi.find('a').attr('href'),
+            skillsHref = skillsLi.find('a').attr('href'),
+            resumeHref = resumeLi.find('a').attr('href'),
+            contactsHref = contactsLi.find('a').attr('href');
 
         if (scroll >= homePos && scroll < portfolioPos){
             homeLi.siblings().removeClass('active');
             homeLi.addClass('active');
+            history.replaceState({page:homeHref}, null, homeHref);
+            document.title = seo_title;
         }
         if (scroll >= portfolioPos && scroll < skillsPos){
             portfolioLi.siblings().removeClass('active');
             portfolioLi.addClass('active');
+            history.replaceState({page:portfolioHref}, null, portfolioHref);
+            document.title = portfolio_seo_title;
         }
         if (scroll >= skillsPos && scroll < resumePos){
             skillsLi.siblings().removeClass('active');
             skillsLi.addClass('active');
+            history.replaceState({page:skillsHref}, null, skillsHref);
+            document.title = skills_seo_title;
         }
         if (scroll >= resumePos && scroll < contactsPos){
             resumeLi.siblings().removeClass('active');
             resumeLi.addClass('active');
+            history.replaceState({page:resumeHref}, null, resumeHref);
+            document.title = resume_seo_title;
         }
         if (scroll >= contactsPos){
             contactsLi.siblings().removeClass('active');
             contactsLi.addClass('active');
+            history.replaceState({page:contactsHref}, null, contactsHref);
+            document.title = contact_seo_title;
         }
 
     }
@@ -215,7 +225,7 @@ $(function () {
             var curSection = '#'+$(this).attr('title').toLowerCase(),
                 offsetTop = $(curSection).offset().top - topMenuHeight + 1;
             $(this).closest('li').addClass();
-            $("html, body").animate({ scrollTop: offsetTop }, "slow");
+            $("html, body").animate({scrollTop: offsetTop}, "slow");
         });
     }
 
@@ -227,7 +237,7 @@ $(function () {
     function sideEffects(el){
         var scroll = $(this).scrollTop();
         el.each(function(){
-            var halfHeight = $(this).outerHeight()/3;
+            var halfHeight = $(this).outerHeight()/2;
             if($(this).offset().top > scroll - halfHeight && $(this).offset().top < scroll - halfHeight + $(window).height()){
                 $(this).addClass('show');
             }
@@ -365,7 +375,7 @@ $(function () {
 
     }
     if(ScreenWidth < 580){
-       
+
     }
     if(ScreenWidth < 480){
 
@@ -383,10 +393,10 @@ $(function () {
         allEffects();
 
         /*setTimeout(function(){
-            $('.portfolio-project').fsort({
-                ppp: 4
-            });
-        },500);*/
+         $('.portfolio-project').fsort({
+         ppp: 4
+         });
+         },500);*/
     });
 
 });

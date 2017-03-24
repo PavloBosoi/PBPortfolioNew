@@ -422,3 +422,13 @@ span.wpcf7-not-valid-tip {
     line-height: normal;
     white-space: nowrap;
 }
+.ajax-loader{
+    opacity:0;
+}
+.success-message{
+    text-align: center;
+    font-weight: bold;
+    @include fluidFontSize(14px,20px,480px,1024px,30px,16px);
+    text-transform: uppercase;
+    color: $color1;
+}
